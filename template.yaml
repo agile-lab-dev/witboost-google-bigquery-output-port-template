@@ -147,11 +147,11 @@ spec:
                     title: Data Type
                     enum:
                       - STRING
-                      - INTEGER
-                      - FLOAT
+                      - INT64
+                      - FLOAT64
                       - NUMERIC
                       - BIGNUMERIC
-                      - BOOLEAN
+                      - BOOL
                       - TIMESTAMP
                       - DATE
                       - TIME
