@@ -1,3 +1,4 @@
+%SKELETON
 {%- set parentMajorVersion = values.identifier.split(".")[2] -%}
 
 apiVersion: backstage.io/v1alpha1
@@ -55,21 +56,26 @@ spec:
       {%- endif %}
           tags: []
       {% endfor %}{% else %}[]{% endif %}
-      termsAndConditions: ${{ values.termsAndConditions }}
-      endpoint: ${{ values.endpoint }}
+      termsAndConditions: ${{ parameters.termsAndConditions }}
+      endpoint: ${{ parameters.endpoint }}
       SLA:
-        intervalOfChange: ${{ values.intervalOfChange }}
-        timeliness: ${{ values.timeliness }}
-        upTime: ${{ values.upTime }}
+        intervalOfChange: ${{ parameters.intervalOfChange }}
+        timeliness: ${{ parameters.timeliness }}
+        upTime: ${{ parameters.upTime }}
     dataSharingAgreement:
-      purpose: ${{ values.purpose }}
-      billing: ${{ values.billing }}
-      security: ${{ values.security }}
-      intendedUsage: ${{ values.intendedUsage }}
-      limitations: ${{ values.limitations }}
-      lifeCycle: ${{ values.lifeCycle }}
-      confidentiality: ${{ values.confidentiality }}
-    tags: []
+      purpose: ${{ parameters.purpose }}
+      billing: ${{ parameters.billing }}
+      security: ${{ parameters.security }}
+      intendedUsage: ${{ parameters.intendedUsage }}
+      limitations: ${{ parameters.limitations }}
+      lifeCycle: ${{ parameters.lifeCycle }}
+      confidentiality: ${{ parameters.confidentiality }}
+    tags: {% if parameters.tags | length > 0 %}{% for i in parameters.tags %}
+      - tagFQN: ${{ i }}
+        source: Glossary
+        labelType: Manual
+        state: Confirmed
+    {% endfor %}{% else %}[]{% endif %}
     sampleData: {}
     semanticLinking: []
     specific:
