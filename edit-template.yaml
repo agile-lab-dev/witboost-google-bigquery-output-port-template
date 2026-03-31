@@ -248,6 +248,7 @@ spec:
                           title: Column Length
                           type: integer
                           description: Maximum length of column row
+                          minimum: 1
                   - if:
                       properties:
                         dataType:

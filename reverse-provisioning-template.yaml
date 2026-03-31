@@ -1,0 +1,48 @@
+apiVersion: witboost.com/v2
+kind: ReverseProvisioningTemplate
+metadata:
+  name: reverse-provisioning-google-bigquery-outputport-template.1
+  title: BigQuery Output Port
+  description: Import the metadata of a BigQuery table.
+  tags:
+    - reverse-provisioning
+    - outputport
+    - bigquery
+spec:
+  owner: agilelab
+  useCaseTemplateId:
+    - urn:dmb:utm:google-bigquery-outputport-template:0.0.0
+  parameters:
+    title: BigQuery Output Port Information
+    description: |-
+      This wizard allows you to update the BigQuery Output Port on Witboost by importing the metadata of a table.
+      Please specify the information about the table to be analyzed.
+    required:
+      - project
+      - dataset
+      - tableName
+    properties:
+      project:
+        title: Project ID
+        type: string
+        ui:field: RegexPicker
+        validation:
+          errorMessage: Project ID must be 6-30 characters long, start with a lowercase letter, contain only lowercase letters, numbers, and hyphens, and must not end with a hyphen.
+          regularExpression: ^[a-z][a-z0-9-]{4,28}[a-z0-9]$
+        description: Google BigQuery project ID where the dataset is stored.
+      dataset:
+        title: Dataset name
+        type: string
+        ui:field: RegexPicker
+        validation:
+          errorMessage: Dataset name must be 1-1024 characters long and can include letters, numbers, and underscores only.
+          regularExpression: ^[A-Za-z0-9_]{1,1024}$
+        description: Dataset name where the source table is stored.
+      tableName:
+        title: Table name
+        type: string
+        ui:field: RegexPicker
+        validation:
+          errorMessage: Table name must be 1-1024 characters long and can include letters, numbers, underscores, dashes, spaces.
+          regularExpression: ^[A-Za-z0-9_\- ]{1,1024}$
+        description: Source table name located on the provided dataset.

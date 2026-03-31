@@ -180,7 +180,7 @@ spec:
                           title: Column Length
                           type: integer
                           description: Maximum length of column row
-                          minimum: 0
+                          minimum: 1
                   - if:
                       properties:
                         dataType:

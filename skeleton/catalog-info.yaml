@@ -42,13 +42,13 @@ spec:
       {%- if column.constraint %}
           constraint: ${{ column.constraint }}
       {%- endif %}
-      {%- if column.dataType in ["STRING", "BYTES"] and column.dataLength !== undefined %}
+      {%- if column.dataType in ["STRING", "BYTES"] and column.dataLength %}
           dataLength: ${{ column.dataLength }}
       {%- endif %}
-      {%- if column.dataType in ["NUMERIC", "BIGNUMERIC"] and column.precision !== undefined %}
+      {%- if column.dataType in ["NUMERIC", "BIGNUMERIC"] and column.precision %}
           precision: ${{ column.precision }}
       {%- endif %}
-      {%- if column.dataType in ["NUMERIC", "BIGNUMERIC"] and column.scale !== undefined %}
+      {%- if column.dataType in ["NUMERIC", "BIGNUMERIC"] and column.scale %}
           scale: ${{ column.scale }}
       {%- endif %}
       {%- if column.dataType in ["NUMERIC", "BIGNUMERIC"] and column.roundingMode %}
